@@ -19,7 +19,7 @@ export default {
         addTodo () {
             if (this.newTodoItem != '') {
                 var value = this.newTodoItem && this.newTodoItem.trim();    // input 태그 입력값 앞뒤 공백 제거
-                localStorage.setItem(value, value);
+                this.$emit('addTodo', value);   // addTodo 이벤트 발생 시 value 전달
                 this.clearInput();  // input 태그 입력값 초기화
             }
         },
