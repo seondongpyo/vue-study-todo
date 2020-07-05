@@ -1,6 +1,7 @@
 <template>
     <section>
-        <ul>
+        <!-- transition-group : 목록에 애니메이션을 추가할 때 사용되는 태그  -->
+        <transition-group name="list" tag="ul">
             <li class="shadow" v-for="(todoItem, index) in propsdata" v-bind:key="todoItem">
                 <i class="checkBtn fas fa-check" aria-hidden="true"></i>
                 {{ todoItem }}
@@ -8,7 +9,7 @@
                     <i class="fa fa-trash-alt" aria-hidden="true"></i>
                 </span>
             </li>
-        </ul>
+        </transition-group>
     </section>
 </template>
 
@@ -24,6 +25,15 @@ export default {
 </script>
 
 <style scoped>
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+
+    .list-enter, .list-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
     ul {
         list-style-type: none;
         padding-left: 0px;
